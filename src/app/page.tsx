@@ -1,116 +1,242 @@
 import Image from "next/image";
 
+const services = [
+  {
+    title: "Risk Intelligence",
+    description:
+      "Holistic assessments that rank business impact, technical likelihood, and remediation velocity.",
+    badge: "Tier-0 Critical",
+    icon: "🛰️",
+  },
+  {
+    title: "Adversary Simulation",
+    description:
+      "Red-team playbooks mapped to MITRE ATT&CK with payload telemetry and live operator updates.",
+    badge: "Live Ops",
+    icon: "🛡️",
+  },
+  {
+    title: "Application Hardening",
+    description:
+      "SAST/DAST pipelines, threat modeling, and build-time guardrails to keep releases clean.",
+    badge: "CI-Linked",
+    icon: "🔧",
+  },
+  {
+    title: "Compliance & GRC",
+    description: "ISO, SOC2, and GDPR guidance packaged with evidence capture and audit trails.",
+    badge: "Audit Ready",
+    icon: "📜",
+  },
+];
+
+const intel = [
+  {
+    label: "Detection",
+    value: "> 92%",
+    text: "Exploit paths intercepted in staging before prod impact.",
+  },
+  {
+    label: "Mean Containment",
+    value: "21m",
+    text: "Average time to isolate a verified incident with playbook automation.",
+  },
+  {
+    label: "Coverage",
+    value: "74",
+    text: "Critical controls monitored across cloud, network, and identity planes.",
+  },
+];
+
+const process = [
+  {
+    title: "Recon",
+    detail: "Surface mapping, asset fingerprinting, and weak-link detection across your estate.",
+  },
+  {
+    title: "Exploit",
+    detail: "Operator-led breach attempts with chained CVEs, misconfigs, and social vectors.",
+  },
+  {
+    title: "Report",
+    detail: "Actionable remediation ranked by business impact, with proof-of-exploit artifacts.",
+  },
+  {
+    title: "Fortify",
+    detail: "Guardrails, monitoring hooks, and tabletop drills to keep you breach-hardened.",
+  },
+];
+
 export default function Home() {
   return (
     <main>
-      {/* Hero Section */}
-      <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '8rem' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
-            <div>
-              <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem' }}>
-                Secure Your <span style={{ color: 'var(--primary)' }}>Digital Future</span>
-              </h1>
-              <p style={{ fontSize: '1.25rem', marginBottom: '2.5rem' }}>
-                RAST Micro provides comprehensive Risk Assessment and Security Testing to protect your business from evolving cyber threats.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <a href="#contact" className="button button-primary">Get an Assessment</a>
-                <a href="#services" className="button button-outline">View Services</a>
-              </div>
+      <section id="home" className="section hero">
+        <div className="container hero__grid">
+          <div className="hero__content">
+            <div className="tag">Militech-inspired security bureau</div>
+            <h1>
+              Militech-grade defense for
+              <span className="accent"> critical infrastructure</span>
+            </h1>
+            <p className="lede">
+              RAST Micro executes risk assessment and offensive testing with the precision of a black-ops SOC. We neutralize threats before they breach, and harden your stack with battle-ready controls.
+            </p>
+            <div className="hero__actions">
+              <a href="#contact" className="button button-primary">
+                Deploy an Assessment
+              </a>
+              <a href="#services" className="button button-ghost">
+                View Service Matrix
+              </a>
             </div>
-            <div style={{ position: 'relative', height: '400px', borderRadius: '1rem', overflow: 'hidden' }}>
+            <div className="hero__badges">
+              <div className="badge">SOC-Ready Playbooks</div>
+              <div className="badge badge--outline">Operator-led Red Team</div>
+              <div className="badge">Zero-Trust Alignment</div>
+            </div>
+          </div>
+          <div className="hero__visual">
+            <div className="holo-frame">
               <Image
-                src="/rast_micro_hero.png" // I need to move the generated image to public
+                src="/rast_micro_hero.png"
                 alt="Security Testing Visualization"
                 fill
-                style={{ objectFit: 'cover' }}
+                sizes="(min-width: 1024px) 480px, 100vw"
+                style={{ objectFit: "cover" }}
+                priority
               />
+              <div className="scanlines" aria-hidden />
+            </div>
+            <div className="intel-strip">
+              {intel.map((item) => (
+                <div key={item.label} className="intel-card">
+                  <div className="intel-label">{item.label}</div>
+                  <div className="intel-value">{item.value}</div>
+                  <p>{item.text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" style={{ background: 'var(--secondary)' }}>
+      <section id="services" className="section">
         <div className="container">
           <div className="section-title">
-            <h2>Our Services</h2>
-            <p>Comprehensive security solutions tailored to your business needs.</p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            <div className="glass" style={{ padding: '2rem' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🛡️</div>
-              <h3>Risk Assessment</h3>
-              <p>Identifying potential vulnerabilities and assessing the impact on your business operations.</p>
-            </div>
-            <div className="glass" style={{ padding: '2rem' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🔍</div>
-              <h3>Security Testing</h3>
-              <p>Rigorous testing of your infrastructure, applications, and networks to ensure robust protection.</p>
-            </div>
-            <div className="glass" style={{ padding: '2rem' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>💻</div>
-              <h3>Penetration Testing</h3>
-              <p>Simulating real-world attacks to find and fix weaknesses before malicious actors can exploit them.</p>
-            </div>
-            <div className="glass" style={{ padding: '2rem' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📜</div>
-              <h3>Compliance Audits</h3>
-              <p>Ensuring your systems meet industrial standards and regulatory requirements (ISO, GDPR, etc).</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about">
-        <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-            <h2>Why RAST Micro?</h2>
-            <p style={{ fontSize: '1.15rem' }}>
-              At RAST Micro, we believe that security is not just a checkbox, but a continuous process. Our team of experts uses the latest methodologies and tools to provide actionable insights and reliable protection for your digital assets.
+            <div className="tag">Service Matrix</div>
+            <h2>Built for hostile networks</h2>
+            <p>
+              Full-spectrum security operations engineered with Militech discipline—decisive, modular, and always combat-ready.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '4rem', marginTop: '3rem' }}>
-              <div>
-                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)' }}>500+</div>
-                <div style={{ color: 'var(--muted)' }}>Assessments Done</div>
+          </div>
+          <div className="card-grid">
+            {services.map((service) => (
+              <div key={service.title} className="card">
+                <div className="card__header">
+                  <span className="card__icon" aria-hidden>
+                    {service.icon}
+                  </span>
+                  <span className="badge badge--outline">{service.badge}</span>
+                </div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <div className="divider" />
+                <ul className="pills">
+                  <li>Threat Modeling</li>
+                  <li>Zero-Day Watch</li>
+                  <li>Operator Support</li>
+                </ul>
               </div>
-              <div>
-                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)' }}>100%</div>
-                <div style={{ color: 'var(--muted)' }}>Success Rate</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="section alt">
+        <div className="container about">
+          <div className="about__copy">
+            <div className="tag">Why RAST Micro</div>
+            <h2>Hardwired for resilience</h2>
+            <p>
+              We combine battle-tested red teamers, seasoned defenders, and automation engineers into one strike group. Every engagement ships with clean evidence, replayable attack paths, and remediation you can execute fast.
+            </p>
+            <div className="stat-grid">
+              <div className="stat">
+                <span className="stat__value">500+</span>
+                <span className="stat__label">Assessments Completed</span>
               </div>
-              <div>
-                <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)' }}>24/7</div>
-                <div style={{ color: 'var(--muted)' }}>Expert Support</div>
+              <div className="stat">
+                <span className="stat__value">100%</span>
+                <span className="stat__label">Exploit Replay Coverage</span>
               </div>
+              <div className="stat">
+                <span className="stat__value">24/7</span>
+                <span className="stat__label">Operator Availability</span>
+              </div>
+            </div>
+          </div>
+          <div className="process">
+            <div className="process__header">
+              <div className="tag">Engagement Flow</div>
+              <h3>Operational lifecycle</h3>
+            </div>
+            <div className="process__steps">
+              {process.map((step, index) => (
+                <div key={step.title} className="process__step">
+                  <div className="process__index">{index + 1}</div>
+                  <div>
+                    <h4>{step.title}</h4>
+                    <p>{step.detail}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" style={{ background: 'var(--secondary)' }}>
-        <div className="container">
-          <div className="section-title">
-            <h2>Ready to Secure Your Business?</h2>
-            <p>Contact us today for a free initial consultation and risk overview.</p>
+      <section id="contact" className="section">
+        <div className="container contact">
+          <div>
+            <div className="tag">Engage</div>
+            <h2>Ready to lock down your perimeter?</h2>
+            <p>
+              Send a signal and we will respond with a tailored mission brief, timelines, and operator roster within one business day.
+            </p>
+            <div className="intel-strip intel-strip--compact">
+              <div className="intel-card">
+                <div className="intel-label">Response SLA</div>
+                <div className="intel-value">4h</div>
+                <p>During active incidents.</p>
+              </div>
+              <div className="intel-card">
+                <div className="intel-label">Coverage</div>
+                <div className="intel-value">Global</div>
+                <p>Follow-the-sun operator teams.</p>
+              </div>
+            </div>
           </div>
-          <div className="glass" style={{ maxWidth: '600px', margin: '0 auto', padding: '3rem' }}>
-            <form style={{ display: 'grid', gap: '1.5rem' }}>
-              <div style={{ display: 'grid', gap: '0.5rem' }}>
-                <label>Name</label>
-                <input type="text" placeholder="Your Name" style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--border)', background: 'var(--background)', color: '#fff' }} />
-              </div>
-              <div style={{ display: 'grid', gap: '0.5rem' }}>
-                <label>Email</label>
-                <input type="email" placeholder="your@email.com" style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--border)', background: 'var(--background)', color: '#fff' }} />
-              </div>
-              <div style={{ display: 'grid', gap: '0.5rem' }}>
-                <label>Message</label>
-                <textarea rows={4} placeholder="How can we help you?" style={{ padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid var(--border)', background: 'var(--background)', color: '#fff' }}></textarea>
-              </div>
-              <button type="button" className="button button-primary" style={{ width: '100%' }}>Send Message</button>
+          <div className="form-card">
+            <div className="form-card__header">
+              <h3>Mission Intake</h3>
+              <span className="badge">Encrypted</span>
+            </div>
+            <form className="form">
+              <label>
+                <span>Full Name</span>
+                <input type="text" placeholder="Morgan Blackhand" />
+              </label>
+              <label>
+                <span>Work Email</span>
+                <input type="email" placeholder="you@company.com" />
+              </label>
+              <label>
+                <span>Objective</span>
+                <textarea rows={4} placeholder="Pen test scope, environments, timelines" />
+              </label>
+              <button type="button" className="button button-primary">
+                Transmit Brief
+              </button>
             </form>
           </div>
         </div>
