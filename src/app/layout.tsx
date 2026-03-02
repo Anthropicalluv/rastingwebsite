@@ -59,7 +59,7 @@ export default function RootLayout({
           <div className="container footer">
             <div>
               <div className="logo">RAST<span>MICRO</span></div>
-              <p>© {new Date().getFullYear()} RAST Micro. Militech-grade security for hostile networks.</p>
+                <p>© {new Date().getFullYear()} RAST Micro. Siege-grade security for hostile networks.</p>
             </div>
             <div className="footer__links">
               <a href="#services">Services</a>

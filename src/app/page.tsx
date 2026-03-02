@@ -73,9 +73,9 @@ export default function Home() {
       <section id="home" className="section hero">
         <div className="container hero__grid">
           <div className="hero__content">
-            <div className="tag">Militech-inspired security bureau</div>
+            <div className="tag">Tactical security bureau</div>
             <h1>
-              Militech-grade defense for
+              Tier-one defense for
               <span className="accent"> critical infrastructure</span>
             </h1>
             <p className="lede">
@@ -124,9 +124,9 @@ export default function Home() {
         <div className="container">
           <div className="section-title">
             <div className="tag">Service Matrix</div>
-            <h2>Built for hostile networks</h2>
+              <h2>Built for hostile networks</h2>
             <p>
-              Full-spectrum security operations engineered with Militech discipline—decisive, modular, and always combat-ready.
+                Full-spectrum security operations engineered with decisive, modular, and always combat-ready discipline.
             </p>
           </div>
           <div className="card-grid">
